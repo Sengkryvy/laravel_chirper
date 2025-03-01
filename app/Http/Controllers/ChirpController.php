@@ -6,6 +6,7 @@ use App\Models\Chirp;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class ChirpController extends Controller
@@ -33,6 +34,7 @@ class ChirpController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        Log::debug('Storing in controller');
         $validated = $request->validate([
             'message' => 'required|string|max:255',
         ]);
